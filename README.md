@@ -22,6 +22,14 @@
 - **Prettier** — Code formatting
 - **Git & GitHub** — Version control and collaboration
 
+## AI-Assisted Development
+
+Capytal adopts an AI-assisted development workflow through “Cinnamon, the Capybara” — a shared AI agent/persona used across tools such as ChatGPT and Claude Code.
+
+The agent is responsible for supporting architecture discussions, implementation planning, documentation, development workflows, and product decisions while maintaining a consistent project context and communication style across the development environment.
+
+This approach helps accelerate iteration, improve development consistency, and explore modern AI-augmented software engineering practices.
+
 ## Documentation
 
 Project-related documentation is organized inside the `/docs` directory.
