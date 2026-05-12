@@ -22,6 +22,30 @@
 - **Prettier** — Code formatting
 - **Git & GitHub** — Version control and collaboration
 
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed before running the project:
+
+- **Node.js** `v22.x` or higher — [nodejs.org](https://nodejs.org)
+- **Yarn** `v4.x` (Berry) — enabled via Corepack (`corepack enable`)
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/lucasjacques/capytal.git
+cd capytal
+
+# Install dependencies
+yarn install
+```
+
+### Running Locally
+
+> Setup instructions will be added as the project progresses.
+
 ## AI-Assisted Development
 
 Capytal adopts an AI-assisted development workflow through “Cinnamon, the Capybara” — a shared AI agent/persona used across tools such as ChatGPT and Claude Code.
