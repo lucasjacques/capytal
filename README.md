@@ -65,3 +65,6 @@ Current documents:
 
 - [`roadmap.md`](./docs/roadmap.md)  
   Describes the planned project phases, milestones and feature evolution.
+
+- [`decisions.md`](./docs/decisions.md)  
+  Records non-obvious technical and architectural decisions with their reasoning.
