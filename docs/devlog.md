@@ -8,13 +8,13 @@ Weekly engineering journal tracking progress, decisions, and learnings.
 
 Target: functional foundation with auth, testing, database, and CI/CD in place.
 
-| Week | Dates     | Focus                                                     | Status         |
-| ---- | --------- | --------------------------------------------------------- | -------------- |
-| 1    | May 11–15 | Project scaffolding, Next.js setup, code quality tooling  | ✅ Done        |
-| 2    | May 18–22 | Testing setup (Vitest, React Testing Library, Playwright) | 🔄 In progress |
-| 3    | May 25–29 | Database layer (Docker, PostgreSQL, Drizzle ORM)          | 📋 Planned     |
-| 4    | Jun 01–05 | Authentication (Auth.js, registration, login, sessions)   | 📋 Planned     |
-| 5    | Jun 08–12 | Protected routes, CI/CD (GitHub Actions), v0.0 wrap-up    | 📋 Planned     |
+| Week | Dates     | Focus                                                     | Status                                               |
+| ---- | --------- | --------------------------------------------------------- | ---------------------------------------------------- |
+| 1    | May 11–15 | Project scaffolding, Next.js setup, code quality tooling  | ✅ Done                                              |
+| 2    | May 18–22 | Testing setup (Vitest, React Testing Library, Playwright) | ✅ Done (Delivered @2025-05-19 - ahead of scheduled) |
+| 3    | May 25–29 | Database layer (Docker, PostgreSQL, Drizzle ORM)          | 🔄 In progress                                       |
+| 4    | Jun 01–05 | Authentication (Auth.js, registration, login, sessions)   | 📋 Planned                                           |
+| 5    | Jun 08–12 | Protected routes, CI/CD (GitHub Actions), v0.0 wrap-up    | 📋 Planned                                           |
 
 ---
 
