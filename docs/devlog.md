@@ -42,3 +42,35 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 
 - Testing setup: Vitest, React Testing Library, Playwright
 - Weekly devlog cadence: entry every Friday going forward
+
+## Week 2 — May 18–22, 2026
+
+### Planned
+
+- Testing setup (Vitest, React Testing Library, Playwright)
+
+### What was built
+
+- Testing setup: Vitest + React Testing Library for unit tests, Playwright for E2E tests across Chromium, Firefox, and WebKit
+- First unit test and E2E test written and passing
+- Docker + PostgreSQL: containerized local database with `docker-compose.yml`
+- Started database layer: Drizzle ORM installed, `drizzle.config.ts` and `src/db/index.ts` created (migration pending)
+
+> Delivered testing setup ahead of schedule — started database layer (Week 3 scope) within the same week.
+
+### Decisions made
+
+- Vitest chosen over Jest — faster, native TypeScript support, no extra config for ESM
+- Playwright configured to run against all three major browser engines
+- Docker chosen over Neon for PostgreSQL — more educational, teaches containerization
+
+### Learnings
+
+- Yarn Berry requires manual installation of peer packages (e.g. `vite`, `@testing-library/dom`)
+- Browser binaries are stored globally in `AppData`, not in the project — never committed
+- `.env` holds real credentials, `.env.example` is the committed template
+
+### Planned for next week
+
+- Complete database layer: schema, first migration, verify connection
+- Start authentication: Auth.js setup, registration and login flow
