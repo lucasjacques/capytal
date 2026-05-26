@@ -11,6 +11,8 @@
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -23,7 +25,9 @@
     ]
   },
   "dependencies": {
+    "drizzle-orm": "^0.45.2",
     "next": "^16.2.6",
+    "pg": "^8.21.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },
@@ -35,10 +39,12 @@
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
     "@types/node": "^25.7.0",
+    "@types/pg": "^8.20.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.2",
     "@vitest/coverage-v8": "^4.1.6",
+    "drizzle-kit": "^0.31.10",
     "eslint": "^9",
     "eslint-config-next": "^16.2.6",
     "husky": "^9.1.7",
