@@ -18,30 +18,29 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 
 ---
 
-## Week 1 — May 11–15, 2026
+## Week 3 — May 25–29, 2026
+
+### Planned
+
+- Database layer (Docker, PostgreSQL, Drizzle ORM)
 
 ### What was built
 
-- Initialized Yarn Berry workspace with project scaffolding
-- Set up Next.js 16 manually with TypeScript, Tailwind v4, App Router, and `src/` directory structure
-- Configured code quality tooling: Prettier, ESLint 9 (flat config), Husky pre-commit hook with lint-staged
+- Database layer fully completed: Docker + PostgreSQL container, Drizzle ORM configured, `users` schema defined, first migration applied
 
 ### Decisions made
 
-- Chose Docker over Neon for PostgreSQL — more educational, teaches containerization
-- Skipped `create-next-app` due to conflict with existing files — manual install gave better visibility into each dependency
-- Switched Yarn linker from PnP to `node-modules` — Turbopack incompatibility with PnP required the change
+- JWT strategy chosen over database sessions for Auth (simpler for MVP stage)
+- `users` table kept minimal — only what auth needs: `id`, `email`, `passwordHash`, `createdAt`
 
 ### Learnings
 
-- Yarn Berry (v4) removed classic shorthands like `yarn i` — commands must be explicit
-- `noEmit: true` in tsconfig tells TypeScript to only type-check, not compile — Next.js handles compilation
-- ESLint 9 uses a new flat config format; bridging old-style configs (like `next/core-web-vitals`) via `FlatCompat` has rough edges
+- Drizzle generates human-readable migration filenames (e.g. `0000_faithful_whizzer.sql`) — these should always be committed alongside schema changes
+- Docker volumes persist database data across container restarts
 
 ### Planned for next week
 
-- Testing setup: Vitest, React Testing Library, Playwright
-- Weekly devlog cadence: entry every Friday going forward
+- Authentication: Auth.js setup, credentials provider, registration and login flow, protected routes
 
 ## Week 2 — May 18–22, 2026
 
@@ -74,3 +73,28 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 
 - Complete database layer: schema, first migration, verify connection
 - Start authentication: Auth.js setup, registration and login flow
+
+## Week 1 — May 11–15, 2026
+
+### What was built
+
+- Initialized Yarn Berry workspace with project scaffolding
+- Set up Next.js 16 manually with TypeScript, Tailwind v4, App Router, and `src/` directory structure
+- Configured code quality tooling: Prettier, ESLint 9 (flat config), Husky pre-commit hook with lint-staged
+
+### Decisions made
+
+- Chose Docker over Neon for PostgreSQL — more educational, teaches containerization
+- Skipped `create-next-app` due to conflict with existing files — manual install gave better visibility into each dependency
+- Switched Yarn linker from PnP to `node-modules` — Turbopack incompatibility with PnP required the change
+
+### Learnings
+
+- Yarn Berry (v4) removed classic shorthands like `yarn i` — commands must be explicit
+- `noEmit: true` in tsconfig tells TypeScript to only type-check, not compile — Next.js handles compilation
+- ESLint 9 uses a new flat config format; bridging old-style configs (like `next/core-web-vitals`) via `FlatCompat` has rough edges
+
+### Planned for next week
+
+- Testing setup: Vitest, React Testing Library, Playwright
+- Weekly devlog cadence: entry every Friday going forward
