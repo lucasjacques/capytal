@@ -47,6 +47,22 @@ cd capytal
 yarn install
 ```
 
+### Environment Setup
+
+Copy the example environment file:
+
+```bash
+cp .env.example .env
+```
+
+Then configure each variable:
+
+- **`DATABASE_URL`** — points to your PostgreSQL instance. If using Docker, the value in `.env.example` works out of the box after `docker compose up -d`.
+- **`AUTH_SECRET`** — secret key for signing Auth.js tokens. Generate one with:
+  ```bash
+  node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+  ```
+
 ### Running Locally
 
 > Setup instructions will be added as the project progresses.
