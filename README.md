@@ -36,6 +36,22 @@ Make sure you have the following installed before running the project:
 - **Node.js** `v22.x` or higher — [nodejs.org](https://nodejs.org)
 - **Yarn** `v4.x` (Berry) — enabled via Corepack (`corepack enable`)
 
+### Local Development
+
+This project uses Docker for the local PostgreSQL database.
+
+- Install Docker Desktop.
+- On Windows, enable the WSL 2 backend.
+- Use Linux containers.
+- Defaults are usually fine for local dev.
+
+Start the database from the repo root:
+
+```bash
+docker compose up
+```
+If Docker is already running and the database is slow, increase CPU/RAM in Docker Desktop settings.
+
 ### Installation
 
 ```bash
