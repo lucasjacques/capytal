@@ -12,11 +12,43 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 | ---- | --------- | --------------------------------------------------------- | ---------------------------------------------------- |
 | 1    | May 11–15 | Project scaffolding, Next.js setup, code quality tooling  | ✅ Done                                              |
 | 2    | May 18–22 | Testing setup (Vitest, React Testing Library, Playwright) | ✅ Done (Delivered @2025-05-19 - ahead of scheduled) |
-| 3    | May 25–29 | Database layer (Docker, PostgreSQL, Drizzle ORM)          | 🔄 In progress                                       |
-| 4    | Jun 01–05 | Authentication (Auth.js, registration, login, sessions)   | 📋 Planned                                           |
-| 5    | Jun 08–12 | Protected routes, CI/CD (GitHub Actions), v0.0 wrap-up    | 📋 Planned                                           |
+| 3    | May 25–29 | Database layer (Docker, PostgreSQL, Drizzle ORM)          | ✅ Done                                              |
+| 4    | Jun 01–05 | Authentication (Auth.js, registration, login, sessions)   | ⚠️ Partial — backend done, login/register UI pending |
+| 5    | Jun 08–12 | Protected routes, CI/CD (GitHub Actions), v0.1.0 wrap-up  | 🔄 In progress                                       |
 
 ---
+
+## Week 4 — Jun 01–05, 2026
+
+### Planned
+
+- Authentication: Auth.js setup, credentials provider, registration and login flow, protected routes
+
+### What was built
+
+- Auth.js v5 (beta) installed and configured with credentials provider
+- API route `/api/auth/[...nextauth]` created
+- Edge-compatible `auth.config.ts` split from main `auth.ts` to support Next.js 16 proxy
+- `src/proxy.ts` created (Next.js 16 renamed middleware → proxy)
+- Environment setup improved: `AUTH_SECRET` generation documented in README
+- Docker local development instructions added to README
+
+### Decisions made
+
+- Split auth config into `auth.config.ts` (edge-safe) and `auth.ts` (Node.js) — required because Next.js 16 proxy runs in Edge Runtime, which doesn't support Node.js built-ins like `bcryptjs`
+
+### Learnings
+
+- Next.js 16 renamed `middleware.ts` → `proxy.ts` and requires export named `proxy` or default
+- Edge Runtime is a restricted environment — no Node.js built-ins, no database drivers, JWT-only
+- Auth.js v5 handles the JWT verification in the proxy layer; actual credential checks stay server-side
+
+### Planned for next week
+
+- Login and registration pages (UI)
+- Protected routes working end-to-end
+- CI/CD with GitHub Actions
+- v0.1.0 wrap-up
 
 ## Week 3 — May 25–29, 2026
 
