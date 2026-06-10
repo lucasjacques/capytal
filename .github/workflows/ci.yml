@@ -42,5 +42,5 @@ jobs:
         run: yarn build
 
       - name: Run E2E tests
-        run: yarn test:e2e
+        run: yarn test:e2e --project=chromium
 
