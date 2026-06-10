@@ -1,6 +1,11 @@
 import { test, expect } from "@playwright/test";
 
-test("home page renders Capytal heading", async ({ page }) => {
+test("redirects unauthenticated users to login", async ({ page }) => {
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: /capytal/i })).toBeVisible();
+  await expect(page).toHaveURL(/\/login/);
+});
+
+test("login page renders sign in heading", async ({ page }) => {
+  await page.goto("/login");
+  await expect(page.getByRole("heading", { name: /sign in/i })).toBeVisible();
 });
