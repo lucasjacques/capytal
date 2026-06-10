@@ -50,6 +50,7 @@ Start the database from the repo root:
 ```bash
 docker compose up
 ```
+
 If Docker is already running and the database is slow, increase CPU/RAM in Docker Desktop settings.
 
 ### Installation
@@ -108,3 +109,9 @@ Current documents:
 
 - [`devlog.md`](./docs/devlog.md)  
   Weekly engineering journal tracking progress, decisions, and learnings.
+
+## Contributing
+
+- Run `yarn test:e2e` manually before pushing any UI-related changes — E2E tests are not bound to the pre-push hook due to server dependency
+- Unit tests run automatically on every push via the pre-push hook
+- CI runs unit tests + Chromium E2E on every push and PR
