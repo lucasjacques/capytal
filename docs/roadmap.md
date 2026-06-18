@@ -33,17 +33,17 @@ software engineering and QA practices.
 
 ### Authentication
 
-- [ ] User registration
-- [ ] Login/logout flow
-- [ ] Session management
-- [ ] Protected routes
+- [x] User registration
+- [x] Login/logout flow
+- [x] Session management
+- [x] Protected routes
 
 ### QA & Testing
 
 - [x] Unit testing setup
 - [x] Integration testing setup
 - [x] End-to-end testing setup
-- [ ] CI testing pipeline
+- [x] CI testing pipeline
 - [x] Linting and formatting rules
 
 ### Frontend Foundation

@@ -32,6 +32,44 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 
 ---
 
+## Week 5 — Jun 08–12, 2026
+
+### Planned
+
+- Login and registration pages (UI) — carried over from Week 4
+- Protected routes working end-to-end
+- CI/CD with GitHub Actions
+- v0.1.0 wrap-up
+
+### What was built
+
+- Login, registration, and sign-out flows completed (carried over from Week 4)
+- GitHub Actions CI pipeline set up: lint, type check, unit tests, and E2E
+- Husky pre-push hook added — runs unit tests before every push
+- Playwright E2E tests updated to test auth redirect behavior instead of page content
+- `webServer` added to `playwright.config.ts` — Playwright starts the server automatically before E2E tests
+- CI E2E restricted to Chromium only (Firefox and WebKit run locally)
+- `AUTH_TRUST_HOST=true` added to fix Auth.js `UntrustedHost` error in CI
+- Contributing section added to README
+
+### Decisions made
+
+- Vitest configured to exclude `src/e2e/**` — prevents Playwright test files from being picked up by the unit test runner
+- E2E tests not bound to the pre-push hook — server dependency makes it impractical; CI covers it instead
+
+### Learnings
+
+- Corepack must be enabled before `setup-node` in GitHub Actions, otherwise Yarn cache detection fails
+- Playwright needs a running server — `webServer` config handles this automatically in both local and CI environments
+- Auth.js blocks requests from untrusted hosts by default; `AUTH_TRUST_HOST=true` is required in non-production environments where the host isn't in the allowlist
+
+### Planned for next week
+
+- Vercel deployment
+- Merge `chore/initial-setup` → `main`
+- Tag `v0.1.0`
+- Week 6: Frontend Foundation (Tailwind polish on login, register, and home pages)
+
 ## Week 4 — Jun 01–05, 2026
 
 ### Planned
