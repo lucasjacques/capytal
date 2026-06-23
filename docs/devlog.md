@@ -16,7 +16,7 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 | 2    | May 18–22 | Testing setup (Vitest, React Testing Library, Playwright) | ✅ Done (Delivered @2026-05-19 - ahead of schedule)  |
 | 3    | May 25–29 | Database layer (Docker, PostgreSQL, Drizzle ORM)          | ✅ Done                                              |
 | 4    | Jun 01–05 | Authentication (Auth.js, registration, login, sessions)   | ⚠️ Partial — backend done, login/register UI pending |
-| 5    | Jun 08–12 | Protected routes, CI/CD (GitHub Actions), v0.1.0 wrap-up  | 🔄 In progress                                       |
+| 5    | Jun 08–12 | Protected routes, CI/CD (GitHub Actions), v0.1.0 wrap-up  | ✅ Done                                              |
 
 ### Scope Additions
 
@@ -24,13 +24,16 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 | --- | ------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------- |
 | 1   | Frontend Foundation | Planned in roadmap from the start but omitted from the weekly schedule — UI polish needed for portfolio presentation | 📋 Planned |
 
-### Extended Plan
-
-| Week | Dates     | Focus                                                                                                         | Status     |
-| ---- | --------- | ------------------------------------------------------------------------------------------------------------- | ---------- |
-| 6    | Jun 15–19 | Frontend Foundation (which was planned but not addressed in the Initial Plan), v0.1.0 wrap-up + retrospective | 📋 Planned |
+| Week | Dates     | Focus                                                                  | Status         |
+| ---- | --------- | ---------------------------------------------------------------------- | -------------- |
+| 6    | Jun 15–19 | No work done                                                           | ⏭️ Skipped     |
+| 7    | Jun 22–26 | Frontend Foundation, Vercel deployment, v0.1.0 wrap-up + retrospective | 🔄 In progress |
 
 ---
+
+## Week 6 — Jun 15–19, 2026
+
+No work done this week.
 
 ## Week 5 — Jun 08–12, 2026
 
