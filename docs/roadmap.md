@@ -26,25 +26,25 @@ software engineering and QA practices.
 
 ### Infrastructure
 
-- [ ] Next.js project setup
-- [ ] PostgreSQL + Drizzle configuration
-- [ ] Environment configuration
+- [x] Next.js project setup
+- [x] PostgreSQL + Drizzle configuration
+- [x] Environment configuration
 - [ ] Vercel deployment setup
 
 ### Authentication
 
-- [ ] User registration
-- [ ] Login/logout flow
-- [ ] Session management
-- [ ] Protected routes
+- [x] User registration
+- [x] Login/logout flow
+- [x] Session management
+- [x] Protected routes
 
 ### QA & Testing
 
-- [ ] Unit testing setup
-- [ ] Integration testing setup
-- [ ] End-to-end testing setup
-- [ ] CI testing pipeline
-- [ ] Linting and formatting rules
+- [x] Unit testing setup
+- [x] Integration testing setup
+- [x] End-to-end testing setup
+- [x] CI testing pipeline
+- [x] Linting and formatting rules
 
 ### Frontend Foundation
 

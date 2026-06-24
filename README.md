@@ -1,5 +1,97 @@
 # Capytal
 
+## Tech Stack
+
+### Frontend
+
+- **Next.js** — React framework for the web application and routing
+- **React** — UI library for building interactive interfaces
+- **TypeScript** — Static typing and improved developer experience
+
+### Backend
+
+- **Next.js API Routes / Server Actions** — Backend logic and server-side features
+
+### Database
+
+- **PostgreSQL** — Relational database for persistent data storage
+- **Drizzle ORM** — Type-safe ORM for database schema and queries
+
+### Infrastructure & Deployment
+
+- **Vercel** — Hosting, deployment, and serverless infrastructure
+
+### Development Tools
+
+- **ESLint** — Code linting and quality enforcement
+- **Prettier** — Code formatting
+- **Git & GitHub** — Version control and collaboration
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed before running the project:
+
+- **Node.js** `v22.x` or higher — [nodejs.org](https://nodejs.org)
+- **Yarn** `v4.x` (Berry) — enabled via Corepack (`corepack enable`)
+
+### Local Development
+
+This project uses Docker for the local PostgreSQL database.
+
+- Install Docker Desktop.
+- On Windows, enable the WSL 2 backend.
+- Use Linux containers.
+- Defaults are usually fine for local dev.
+
+Start the database from the repo root:
+
+```bash
+docker compose up
+```
+
+If Docker is already running and the database is slow, increase CPU/RAM in Docker Desktop settings.
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/lucasjacques/capytal.git
+cd capytal
+
+# Install dependencies
+yarn install
+```
+
+### Environment Setup
+
+Copy the example environment file:
+
+```bash
+cp .env.example .env
+```
+
+Then configure each variable:
+
+- **`DATABASE_URL`** — points to your PostgreSQL instance. If using Docker, the value in `.env.example` works out of the box after `docker compose up -d`.
+- **`AUTH_SECRET`** — secret key for signing Auth.js tokens. Generate one with:
+  ```bash
+  node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+  ```
+
+### Running Locally
+
+> Setup instructions will be added as the project progresses.
+
+## AI-Assisted Development
+
+Capytal adopts an AI-assisted development workflow through “Cinnamon, the Capybara” — a shared AI agent/persona used across tools such as ChatGPT and Claude Code.
+
+The agent is responsible for supporting architecture discussions, implementation planning, documentation, development workflows, and product decisions while maintaining a consistent project context and communication style across the development environment.
+
+This approach helps accelerate iteration, improve development consistency, and explore modern AI-augmented software engineering practices.
+
 ## Documentation
 
 Project-related documentation is organized inside the `/docs` directory.
@@ -11,3 +103,15 @@ Current documents:
 
 - [`roadmap.md`](./docs/roadmap.md)  
   Describes the planned project phases, milestones and feature evolution.
+
+- [`decisions.md`](./docs/decisions.md)  
+  Records non-obvious technical and architectural decisions with their reasoning.
+
+- [`devlog.md`](./docs/devlog.md)  
+  Weekly engineering journal tracking progress, decisions, and learnings.
+
+## Contributing
+
+- Run `yarn test:e2e` manually before pushing any UI-related changes — E2E tests are not bound to the pre-push hook due to server dependency
+- Unit tests run automatically on every push via the pre-push hook
+- CI runs unit tests + Chromium E2E on every push and PR
