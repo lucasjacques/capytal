@@ -84,7 +84,14 @@ Then configure each variable:
 
 ### Running Locally
 
-> Setup instructions will be added as the project progresses.
+Start the database, then the dev server:
+
+```bash
+docker compose up -d
+yarn dev
+```
+
+The app will be available at `http://localhost:3000`.
 
 ## AI-Assisted Development
 
@@ -111,6 +118,9 @@ Current documents:
 
 - [`devlog.md`](./docs/devlog.md)  
   Weekly engineering journal tracking progress, decisions, and learnings.
+
+- [`design.md`](./docs/design.md)  
+  Visual conventions — typography, color palette, component styles, and UI libraries.
 
 ## Contributing
 
