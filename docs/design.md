@@ -55,6 +55,15 @@ Base: `#34C759` — `hsl(142, 55%, 49%)`
 
 ---
 
+## Libraries
+
+| Library   | Role                                                                                                            |
+| --------- | --------------------------------------------------------------------------------------------------------------- |
+| shadcn/ui | Component foundation — accessible, Tailwind-based, code is owned (copied into repo, not a black-box dependency) |
+| Lucide    | Icon library — default icon set for shadcn/ui, consistent with Tailwind conventions                             |
+
+---
+
 ## Inspiration
 
 Visual reference: fintech dashboard — light background, card-based layout, soft greens and blues, generous whitespace.

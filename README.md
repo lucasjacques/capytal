@@ -7,6 +7,8 @@
 - **Next.js** — React framework for the web application and routing
 - **React** — UI library for building interactive interfaces
 - **TypeScript** — Static typing and improved developer experience
+- **shadcn/ui** — Accessible, customizable component library built on Radix UI and Tailwind
+- **Lucide** — Icon library, default icon set for shadcn/ui
 
 ### Backend
 
