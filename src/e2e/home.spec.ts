@@ -11,3 +11,10 @@ test("login page renders welcome heading", async ({ page }) => {
     page.getByRole("heading", { name: /welcome back/i }),
   ).toBeVisible();
 });
+
+test("register page renders create account heading", async ({ page }) => {
+  await page.goto("/register");
+  await expect(
+    page.getByRole("heading", { name: /create a capytal account/i }),
+  ).toBeVisible();
+});
