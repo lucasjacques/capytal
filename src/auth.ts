@@ -1,9 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { db } from "@/db";
-import { users } from "@/db/schema";
-import { eq } from "drizzle-orm";
-import bcrypt from "bcryptjs";
+import { verifyCredentials } from "@/lib/auth-service";
 import { authConfig } from "@/auth.config";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
@@ -16,26 +13,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
-
-        const result = await db
-          .select()
-          .from(users)
-          .where(eq(users.email, credentials.email as string))
-          .limit(1);
-
-        if (!result[0]) return null;
-
-        const passwordMatch = await bcrypt.compare(
+        return verifyCredentials(
+          credentials.email as string,
           credentials.password as string,
-          result[0].passwordHash,
         );
-
-        if (!passwordMatch) return null;
-
-        return {
-          id: String(result[0].id),
-          email: result[0].email,
-        };
       },
     }),
   ],
