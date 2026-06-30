@@ -1,3 +1,4 @@
+// @vitest-environment node
 import "@/test/integration-setup";
 import { db } from "@/db";
 import { users } from "@/db/schema";
