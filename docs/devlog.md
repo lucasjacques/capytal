@@ -24,12 +24,45 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 | --- | ------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------- |
 | 1   | Frontend Foundation | Planned in roadmap from the start but omitted from the weekly schedule — UI polish needed for portfolio presentation | 📋 Planned |
 
-| Week | Dates     | Focus                                                                  | Status         |
-| ---- | --------- | ---------------------------------------------------------------------- | -------------- |
-| 6    | Jun 15–19 | No work done                                                           | ⏭️ Skipped     |
-| 7    | Jun 22–26 | Frontend Foundation, Vercel deployment, v0.1.0 wrap-up + retrospective | 🔄 In progress |
+| Week | Dates         | Focus                                                                  | Status         |
+| ---- | ------------- | ---------------------------------------------------------------------- | -------------- |
+| 6    | Jun 15–19     | No work done                                                           | ⏭️ Skipped     |
+| 7    | Jun 22–26     | Frontend Foundation, Vercel deployment, v0.1.0 wrap-up + retrospective | ✅ Done        |
+| 8    | Jun 29–Jul 03 | Auth test coverage: integration + E2E tests                            | 🔄 In progress |
 
 ---
+
+## Week 7 — Jun 22–26, 2026
+
+### Planned
+
+- Frontend Foundation (UI polish on login, register, home pages)
+- Vercel deployment
+- v0.1.0 wrap-up + retrospective
+
+### What was built
+
+- shadcn/ui set up with Nova preset — component library foundation in place
+- Design document added (`docs/design.md`) with design conventions and component guidelines
+- Register, login, and home pages fully styled with shadcn/ui
+- E2E tests updated to match new page headings
+- `chore/initial-setup` (PR #2) and `feat/frontend-foundation` (PR #3) merged to main
+- Vercel deployment live at `capytal-app.vercel.app`
+- v0.1.0 tagged on GitHub
+- Auth logic extracted into `src/lib/auth-service.ts` — prep for integration test coverage
+
+### Decisions made
+
+- shadcn/ui with Nova preset chosen for component library — consistent with design conventions, good portfolio presentation
+- Auth logic separated into `auth-service.ts` — isolates credential operations from the Next.js auth wiring, making unit and integration testing straightforward
+
+### Learnings
+
+- shadcn/ui component installation modifies `globals.css` and `tailwind.config` — worth reviewing diffs after each add to avoid unintended style overrides
+
+### Planned for next week
+
+- Auth test coverage: integration tests for `createUser` / `verifyCredentials`, E2E tests for full auth flow
 
 ## Week 6 — Jun 15–19, 2026
 
