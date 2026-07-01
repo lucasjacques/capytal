@@ -121,6 +121,25 @@ Current documents:
 - [`design.md`](./docs/design.md)  
   Visual conventions — typography, color palette, component styles, and UI libraries.
 
+## Testing
+
+Capytal adopts a multi-layer testing strategy covering business logic, server-side behavior, and full user flows end-to-end.
+
+| Layer       | Tool                      | Scope                                  |
+| ----------- | ------------------------- | -------------------------------------- |
+| Unit        | Vitest + Testing Library  | UI components and utility logic        |
+| Integration | Vitest (Node environment) | Auth service functions against real DB |
+| E2E         | Playwright (Chromium)     | Register, login, and sign-out flows    |
+
+Tests run automatically on every push via the pre-push hook (unit + integration) and on every push/PR via CI (unit + integration + E2E).
+
+**Test documentation:**
+
+- [`tests/test-plan.md`](./docs/tests/test-plan.md) — overall strategy, layers, scope, and CI integration
+- [`tests/auth/login.md`](./docs/tests/auth/login.md) — login flow test cases and coverage map
+- [`tests/auth/register.md`](./docs/tests/auth/register.md) — register flow test cases and coverage map
+- [`tests/auth/logout.md`](./docs/tests/auth/logout.md) — sign out flow test cases and coverage map
+
 ## Contributing
 
 - Run `yarn test:e2e` manually before pushing any UI-related changes — E2E tests are not bound to the pre-push hook due to server dependency
