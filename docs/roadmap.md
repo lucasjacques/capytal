@@ -55,6 +55,19 @@ software engineering and QA practices.
 
 ---
 
+## Scope Additions
+
+- [x] Test plan document
+- [x] Auth login flow test cases
+- [ ] Auth register flow test cases
+- [ ] Auth sign-out flow test cases
+- [ ] Auth error handling (wrong email, wrong password)
+- [ ] Password confirmation field on register
+- [ ] README polish
+- [ ] Public launch
+
+---
+
 # Phase 1 — MVP
 
 Goal:

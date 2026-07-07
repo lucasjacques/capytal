@@ -10,25 +10,61 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 
 ### Initial Plan
 
-| Week | Dates     | Focus                                                     | Status                                               |
-| ---- | --------- | --------------------------------------------------------- | ---------------------------------------------------- |
-| 1    | May 11–15 | Project scaffolding, Next.js setup, code quality tooling  | ✅ Done                                              |
-| 2    | May 18–22 | Testing setup (Vitest, React Testing Library, Playwright) | ✅ Done (Delivered @2026-05-19 - ahead of schedule)  |
-| 3    | May 25–29 | Database layer (Docker, PostgreSQL, Drizzle ORM)          | ✅ Done                                              |
-| 4    | Jun 01–05 | Authentication (Auth.js, registration, login, sessions)   | ⚠️ Partial — backend done, login/register UI pending |
-| 5    | Jun 08–12 | Protected routes, CI/CD (GitHub Actions), v0.1.0 wrap-up  | ✅ Done                                              |
+| Week | Dates     | Focus                                                     | Status                                              |
+| ---- | --------- | --------------------------------------------------------- | --------------------------------------------------- |
+| 1    | May 11–15 | Project scaffolding, Next.js setup, code quality tooling  | ✅ Done                                             |
+| 2    | May 18–22 | Testing setup (Vitest, React Testing Library, Playwright) | ✅ Done (Delivered @2026-05-19 - ahead of schedule) |
+| 3    | May 25–29 | Database layer (Docker, PostgreSQL, Drizzle ORM)          | ✅ Done                                             |
+| 4    | Jun 01–05 | Authentication (Auth.js, registration, login, sessions)   | ✅ Done (partial → completed in Week 5)             |
+| 5    | Jun 08–12 | Protected routes, CI/CD (GitHub Actions), v0.1.0 wrap-up  | ✅ Done                                             |
 
 ### Scope Additions
 
-| #   | Item                | Reason                                                                                                               | Status     |
-| --- | ------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------- |
-| 1   | Frontend Foundation | Planned in roadmap from the start but omitted from the weekly schedule — UI polish needed for portfolio presentation | 📋 Planned |
+| #   | Item                | Reason                                                                                                               | Status         |
+| --- | ------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------- |
+| 1   | Frontend Foundation | Planned in roadmap from the start but omitted from the weekly schedule — UI polish needed for portfolio presentation | ✅ Done        |
+| 2   | Test documentation  | Portfolio visibility into QA practices; documents test coverage, gaps, and decisions per auth flow                   | 🔄 In progress |
 
 | Week | Dates         | Focus                                                                  | Status         |
 | ---- | ------------- | ---------------------------------------------------------------------- | -------------- |
 | 6    | Jun 15–19     | No work done                                                           | ⏭️ Skipped     |
 | 7    | Jun 22–26     | Frontend Foundation, Vercel deployment, v0.1.0 wrap-up + retrospective | ✅ Done        |
-| 8    | Jun 29–Jul 03 | Auth test coverage: integration + E2E tests                            | 🔄 In progress |
+| 8    | Jun 29–Jul 03 | Auth test coverage: integration + E2E tests                            | ✅ Done        |
+| 9    | Jul 06–10     | Finish test docs, open PR, start auth error handling                   | 🔄 In progress |
+
+---
+
+## Week 8 — Jun 29–Jul 03, 2026
+
+### Planned
+
+- Auth test coverage: integration tests for `createUser` / `verifyCredentials`, E2E tests for full auth flow
+
+### What was built
+
+- Integration tests for `createUser` and `verifyCredentials` — 5 tests, all passing
+- E2E tests for register, login, and sign-out flows — 3 tests, all passing
+- Coverage scoped to `src/lib/**` with 80% threshold — currently at 100%
+- `playwright.global-setup.ts` added to clean up test users before each E2E run
+- Fixed `vitest.config.ts` TypeScript error (`environmentMatchGlobs` removed in Vitest 4.x)
+- `docs/tests/test-plan.md` and `docs/tests/auth/login.md` written
+
+### Decisions made
+
+- Coverage scoped to `src/lib/**` only — components and pages are covered by E2E, not unit/integration
+- 80% threshold set as enforced minimum; currently exceeded at 100% given the small surface area
+- `// @vitest-environment node` used per-file instead of the removed `environmentMatchGlobs` config option
+
+### Learnings
+
+- Auth.js `UntrustedHost` requires `trustHost: true` directly in `authConfig` — env var approach not reliably picked up in production mode
+- After a Next.js server action redirect, Playwright must `waitForURL()` before interacting with the new page — otherwise form fields from the previous page get filled
+
+### Planned for next week
+
+- Finish test docs: `register.md` and `logout.md`
+- Open PR: `test/auth-coverage` → `main`
+- New branch: `fix/auth-error-handling`
 
 ---
 
