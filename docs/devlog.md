@@ -25,12 +25,47 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 | 1   | Frontend Foundation | Planned in roadmap from the start but omitted from the weekly schedule — UI polish needed for portfolio presentation | ✅ Done        |
 | 2   | Test documentation  | Portfolio visibility into QA practices; documents test coverage, gaps, and decisions per auth flow                   | 🔄 In progress |
 
-| Week | Dates         | Focus                                                                  | Status         |
-| ---- | ------------- | ---------------------------------------------------------------------- | -------------- |
-| 6    | Jun 15–19     | No work done                                                           | ⏭️ Skipped     |
-| 7    | Jun 22–26     | Frontend Foundation, Vercel deployment, v0.1.0 wrap-up + retrospective | ✅ Done        |
-| 8    | Jun 29–Jul 03 | Auth test coverage: integration + E2E tests                            | ✅ Done        |
-| 9    | Jul 06–10     | Finish test docs, open PR, start auth error handling                   | 🔄 In progress |
+| Week | Dates         | Focus                                                                  | Status                           |
+| ---- | ------------- | ---------------------------------------------------------------------- | -------------------------------- |
+| 6    | Jun 15–19     | No work done                                                           | ⏭️ Skipped                       |
+| 7    | Jun 22–26     | Frontend Foundation, Vercel deployment, v0.1.0 wrap-up + retrospective | ✅ Done                          |
+| 8    | Jun 29–Jul 03 | Auth test coverage: integration + E2E tests                            | ✅ Done                          |
+| 9    | Jul 06–10     | Finish test docs, open PR, start auth error handling                   | ⚠️ Partial — PR open, CI failing |
+| 10   | Jul 13–17     | Fix CI, merge PR, auth error handling, password confirmation, launch   | 🔄 In progress                   |
+
+---
+
+## Week 9 — Jul 06–10, 2026
+
+### Planned
+
+- Finish test docs: `register.md` and `logout.md`
+- Open PR: `test/auth-coverage` → `main`
+- Start `fix/auth-error-handling`
+
+### What was built
+
+- `docs/tests/auth/register.md` and `docs/tests/auth/logout.md` written
+- README: Testing section added, Vitest and Playwright added to tech stack, docs list updated
+- `src/test/examples.test.tsx` renamed to `home.unit.test.tsx` to reflect test layer and scope
+- CI: PostgreSQL service added so integration tests run against a real database in GitHub Actions
+- PR `test/auth-coverage` opened
+
+### Decisions made
+
+- `DATABASE_URL` set at job level in CI — dotenv skips a missing `.env` and uses the environment value instead, no secrets needed for the test database
+
+### Learnings
+
+- GitHub Actions `services` block spins up a containerized Postgres for the job duration — health check options ensure the container is ready before steps run
+
+### Planned for next week
+
+- Fix remaining CI errors and merge PR `test/auth-coverage`
+- `fix/auth-error-handling`
+- `feat/password-confirmation`
+- README polish
+- Public launch
 
 ---
 
