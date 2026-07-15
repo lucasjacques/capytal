@@ -1,8 +1,6 @@
 import Image from "next/image";
-import { db } from "@/db";
-import { users } from "@/db/schema";
+import { createUser } from "@/lib/auth-service";
 import { redirect } from "next/navigation";
-import bcrypt from "bcryptjs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -30,8 +28,7 @@ export default function RegisterPage() {
               "use server";
               const email = formData.get("email") as string;
               const password = formData.get("password") as string;
-              const passwordHash = await bcrypt.hash(password, 12);
-              await db.insert(users).values({ email, passwordHash });
+              await createUser(email, password);
               redirect("/login");
             }}
             className="flex flex-col h-full gap-4"

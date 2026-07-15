@@ -40,20 +40,9 @@ Make sure you have the following installed before running the project:
 
 ### Local Development
 
-This project uses Docker for the local PostgreSQL database.
+This project uses Docker for the local PostgreSQL database. Install Docker Desktop before continuing — on Windows, enable the WSL 2 backend and use Linux containers.
 
-- Install Docker Desktop.
-- On Windows, enable the WSL 2 backend.
-- Use Linux containers.
-- Defaults are usually fine for local dev.
-
-Start the database from the repo root:
-
-```bash
-docker compose up
-```
-
-If Docker is already running and the database is slow, increase CPU/RAM in Docker Desktop settings.
+If Docker is slow, increase CPU/RAM in Docker Desktop settings.
 
 ### Installation
 
@@ -82,12 +71,22 @@ Then configure each variable:
   node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
   ```
 
-### Running Locally
+### Database Setup
 
-Start the database, then the dev server:
+Start the database and apply migrations:
 
 ```bash
 docker compose up -d
+yarn db:migrate
+```
+
+Only needed once per environment (or after schema changes).
+
+### Running Locally
+
+With Docker running and migrations applied, start the dev server:
+
+```bash
 yarn dev
 ```
 
@@ -121,6 +120,25 @@ Current documents:
 
 - [`design.md`](./docs/design.md)  
   Visual conventions — typography, color palette, component styles, and UI libraries.
+
+## Testing
+
+Capytal adopts a multi-layer testing strategy covering business logic, server-side behavior, and full user flows end-to-end.
+
+| Layer       | Tool                      | Scope                                  |
+| ----------- | ------------------------- | -------------------------------------- |
+| Unit        | Vitest + Testing Library  | UI components and utility logic        |
+| Integration | Vitest (Node environment) | Auth service functions against real DB |
+| E2E         | Playwright (Chromium)     | Register, login, and sign-out flows    |
+
+Tests run automatically on every push via the pre-push hook (unit + integration) and on every push/PR via CI (unit + integration + E2E).
+
+**Test documentation:**
+
+- [`tests/test-plan.md`](./docs/tests/test-plan.md) — overall strategy, layers, scope, and CI integration
+- [`tests/auth/login.md`](./docs/tests/auth/login.md) — login flow test cases and coverage map
+- [`tests/auth/register.md`](./docs/tests/auth/register.md) — register flow test cases and coverage map
+- [`tests/auth/logout.md`](./docs/tests/auth/logout.md) — sign out flow test cases and coverage map
 
 ## Contributing
 

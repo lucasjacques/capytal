@@ -10,26 +10,130 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 
 ### Initial Plan
 
-| Week | Dates     | Focus                                                     | Status                                               |
-| ---- | --------- | --------------------------------------------------------- | ---------------------------------------------------- |
-| 1    | May 11–15 | Project scaffolding, Next.js setup, code quality tooling  | ✅ Done                                              |
-| 2    | May 18–22 | Testing setup (Vitest, React Testing Library, Playwright) | ✅ Done (Delivered @2026-05-19 - ahead of schedule)  |
-| 3    | May 25–29 | Database layer (Docker, PostgreSQL, Drizzle ORM)          | ✅ Done                                              |
-| 4    | Jun 01–05 | Authentication (Auth.js, registration, login, sessions)   | ⚠️ Partial — backend done, login/register UI pending |
-| 5    | Jun 08–12 | Protected routes, CI/CD (GitHub Actions), v0.1.0 wrap-up  | ✅ Done                                              |
+| Week | Dates     | Focus                                                     | Status                                              |
+| ---- | --------- | --------------------------------------------------------- | --------------------------------------------------- |
+| 1    | May 11–15 | Project scaffolding, Next.js setup, code quality tooling  | ✅ Done                                             |
+| 2    | May 18–22 | Testing setup (Vitest, React Testing Library, Playwright) | ✅ Done (Delivered @2026-05-19 - ahead of schedule) |
+| 3    | May 25–29 | Database layer (Docker, PostgreSQL, Drizzle ORM)          | ✅ Done                                             |
+| 4    | Jun 01–05 | Authentication (Auth.js, registration, login, sessions)   | ✅ Done (partial → completed in Week 5)             |
+| 5    | Jun 08–12 | Protected routes, CI/CD (GitHub Actions), v0.1.0 wrap-up  | ✅ Done                                             |
 
 ### Scope Additions
 
-| #   | Item                | Reason                                                                                                               | Status     |
-| --- | ------------------- | -------------------------------------------------------------------------------------------------------------------- | ---------- |
-| 1   | Frontend Foundation | Planned in roadmap from the start but omitted from the weekly schedule — UI polish needed for portfolio presentation | 📋 Planned |
+| #   | Item                | Reason                                                                                                               | Status         |
+| --- | ------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------- |
+| 1   | Frontend Foundation | Planned in roadmap from the start but omitted from the weekly schedule — UI polish needed for portfolio presentation | ✅ Done        |
+| 2   | Test documentation  | Portfolio visibility into QA practices; documents test coverage, gaps, and decisions per auth flow                   | 🔄 In progress |
 
-| Week | Dates     | Focus                                                                  | Status         |
-| ---- | --------- | ---------------------------------------------------------------------- | -------------- |
-| 6    | Jun 15–19 | No work done                                                           | ⏭️ Skipped     |
-| 7    | Jun 22–26 | Frontend Foundation, Vercel deployment, v0.1.0 wrap-up + retrospective | 🔄 In progress |
+| Week | Dates         | Focus                                                                  | Status                           |
+| ---- | ------------- | ---------------------------------------------------------------------- | -------------------------------- |
+| 6    | Jun 15–19     | No work done                                                           | ⏭️ Skipped                       |
+| 7    | Jun 22–26     | Frontend Foundation, Vercel deployment, v0.1.0 wrap-up + retrospective | ✅ Done                          |
+| 8    | Jun 29–Jul 03 | Auth test coverage: integration + E2E tests                            | ✅ Done                          |
+| 9    | Jul 06–10     | Finish test docs, open PR, start auth error handling                   | ⚠️ Partial — PR open, CI failing |
+| 10   | Jul 13–17     | Fix CI, merge PR, auth error handling, password confirmation, launch   | 🔄 In progress                   |
 
 ---
+
+## Week 9 — Jul 06–10, 2026
+
+### Planned
+
+- Finish test docs: `register.md` and `logout.md`
+- Open PR: `test/auth-coverage` → `main`
+- Start `fix/auth-error-handling`
+
+### What was built
+
+- `docs/tests/auth/register.md` and `docs/tests/auth/logout.md` written
+- README: Testing section added, Vitest and Playwright added to tech stack, docs list updated
+- `src/test/examples.test.tsx` renamed to `home.unit.test.tsx` to reflect test layer and scope
+- CI: PostgreSQL service added so integration tests run against a real database in GitHub Actions
+- PR `test/auth-coverage` opened
+
+### Decisions made
+
+- `DATABASE_URL` set at job level in CI — dotenv skips a missing `.env` and uses the environment value instead, no secrets needed for the test database
+
+### Learnings
+
+- GitHub Actions `services` block spins up a containerized Postgres for the job duration — health check options ensure the container is ready before steps run
+
+### Planned for next week
+
+- Fix remaining CI errors and merge PR `test/auth-coverage`
+- `fix/auth-error-handling`
+- `feat/password-confirmation`
+- README polish
+- Public launch
+
+---
+
+## Week 8 — Jun 29–Jul 03, 2026
+
+### Planned
+
+- Auth test coverage: integration tests for `createUser` / `verifyCredentials`, E2E tests for full auth flow
+
+### What was built
+
+- Integration tests for `createUser` and `verifyCredentials` — 5 tests, all passing
+- E2E tests for register, login, and sign-out flows — 3 tests, all passing
+- Coverage scoped to `src/lib/**` with 80% threshold — currently at 100%
+- `playwright.global-setup.ts` added to clean up test users before each E2E run
+- Fixed `vitest.config.ts` TypeScript error (`environmentMatchGlobs` removed in Vitest 4.x)
+- `docs/tests/test-plan.md` and `docs/tests/auth/login.md` written
+
+### Decisions made
+
+- Coverage scoped to `src/lib/**` only — components and pages are covered by E2E, not unit/integration
+- 80% threshold set as enforced minimum; currently exceeded at 100% given the small surface area
+- `// @vitest-environment node` used per-file instead of the removed `environmentMatchGlobs` config option
+
+### Learnings
+
+- Auth.js `UntrustedHost` requires `trustHost: true` directly in `authConfig` — env var approach not reliably picked up in production mode
+- After a Next.js server action redirect, Playwright must `waitForURL()` before interacting with the new page — otherwise form fields from the previous page get filled
+
+### Planned for next week
+
+- Finish test docs: `register.md` and `logout.md`
+- Open PR: `test/auth-coverage` → `main`
+- New branch: `fix/auth-error-handling`
+
+---
+
+## Week 7 — Jun 22–26, 2026
+
+### Planned
+
+- Frontend Foundation (UI polish on login, register, home pages)
+- Vercel deployment
+- v0.1.0 wrap-up + retrospective
+
+### What was built
+
+- shadcn/ui set up with Nova preset — component library foundation in place
+- Design document added (`docs/design.md`) with design conventions and component guidelines
+- Register, login, and home pages fully styled with shadcn/ui
+- E2E tests updated to match new page headings
+- `chore/initial-setup` (PR #2) and `feat/frontend-foundation` (PR #3) merged to main
+- Vercel deployment live at `capytal-app.vercel.app`
+- v0.1.0 tagged on GitHub
+- Auth logic extracted into `src/lib/auth-service.ts` — prep for integration test coverage
+
+### Decisions made
+
+- shadcn/ui with Nova preset chosen for component library — consistent with design conventions, good portfolio presentation
+- Auth logic separated into `auth-service.ts` — isolates credential operations from the Next.js auth wiring, making unit and integration testing straightforward
+
+### Learnings
+
+- shadcn/ui component installation modifies `globals.css` and `tailwind.config` — worth reviewing diffs after each add to avoid unintended style overrides
+
+### Planned for next week
+
+- Auth test coverage: integration tests for `createUser` / `verifyCredentials`, E2E tests for full auth flow
 
 ## Week 6 — Jun 15–19, 2026
 
