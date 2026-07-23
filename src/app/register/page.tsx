@@ -34,6 +34,12 @@ export default async function RegisterPage({
               "use server";
               const emailValue = formData.get("email") as string;
               const password = formData.get("password") as string;
+              const confirmPassword = formData.get("confirmPassword") as string;
+              if (password !== confirmPassword) {
+                redirect(
+                  `/register?error=password_mismatch&email=${encodeURIComponent(emailValue)}`,
+                );
+              }
               try {
                 await createUser(emailValue, password);
                 redirect("/login");
@@ -67,8 +73,22 @@ export default async function RegisterPage({
                 <Label htmlFor="password">Password</Label>
                 <Input id="password" type="password" name="password" required />
               </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="confirmPassword">Confirm password</Label>
+                <Input
+                  id="confirmPassword"
+                  type="password"
+                  name="confirmPassword"
+                  required
+                />
+              </div>
             </div>
-            {error && (
+            {error === "password_mismatch" && (
+              <p className="text-sm text-destructive">
+                Passwords do not match.
+              </p>
+            )}
+            {error === "email_taken" && (
               <p className="text-sm text-destructive">
                 An account with this email already exists.
               </p>

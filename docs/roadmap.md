@@ -68,6 +68,14 @@ software engineering and QA practices.
 
 ---
 
+# Backlog
+
+Small improvements with no committed timeline — polish items that are nice-to-have but don't block any phase.
+
+- [ ] Inline password confirmation validation on register (real-time, without requiring form submit)
+
+---
+
 # Phase 1 — MVP
 
 Goal:
