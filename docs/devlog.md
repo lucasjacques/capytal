@@ -20,10 +20,10 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 
 ### Scope Additions
 
-| #   | Item                | Reason                                                                                                               | Status         |
-| --- | ------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------- |
-| 1   | Frontend Foundation | Planned in roadmap from the start but omitted from the weekly schedule — UI polish needed for portfolio presentation | ✅ Done        |
-| 2   | Test documentation  | Portfolio visibility into QA practices; documents test coverage, gaps, and decisions per auth flow                   | 🔄 In progress |
+| #   | Item                | Reason                                                                                                               | Status  |
+| --- | ------------------- | -------------------------------------------------------------------------------------------------------------------- | ------- |
+| 1   | Frontend Foundation | Planned in roadmap from the start but omitted from the weekly schedule — UI polish needed for portfolio presentation | ✅ Done |
+| 2   | Test documentation  | Portfolio visibility into QA practices; documents test coverage, gaps, and decisions per auth flow                   | ✅ Done |
 
 | Week | Dates         | Focus                                                                  | Status                           |
 | ---- | ------------- | ---------------------------------------------------------------------- | -------------------------------- |
@@ -31,7 +31,36 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 | 7    | Jun 22–26     | Frontend Foundation, Vercel deployment, v0.1.0 wrap-up + retrospective | ✅ Done                          |
 | 8    | Jun 29–Jul 03 | Auth test coverage: integration + E2E tests                            | ✅ Done                          |
 | 9    | Jul 06–10     | Finish test docs, open PR, start auth error handling                   | ⚠️ Partial — PR open, CI failing |
-| 10   | Jul 13–17     | Fix CI, merge PR, auth error handling, password confirmation, launch   | 🔄 In progress                   |
+| 10   | Jul 13–17     | Fix CI, merge PR, auth error handling, password confirmation, launch   | ⏭️ Skipped                       |
+| 11   | Jul 20–24     | Auth error handling, password confirmation, README, launch             | 🔄 In progress                   |
+
+---
+
+## Week 11 — Jul 20–24, 2026
+
+### Planned
+
+- `fix/auth-error-handling`: friendly error messages for wrong credentials and duplicate email
+- `feat/password-confirmation`: password confirmation field on register
+- README polish
+- Public launch
+
+### What was built
+
+- Login page: error message shown on wrong credentials, email field preserved on redirect
+- Register page: error message shown on duplicate email, email field preserved on redirect
+
+### Planned for rest of week
+
+- Password confirmation field on register
+- README polish
+- Public launch
+
+---
+
+## Week 10 — Jul 13–17, 2026
+
+No work done this week.
 
 ---
 

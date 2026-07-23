@@ -153,3 +153,13 @@ Capytal aims to become a modern and accessible investment wallet
 management platform focused on helping users organize investments,
 understand allocations and make long-term financial decisions more
 clearly and confidently.
+
+## Infrastructure Evolution
+
+As the platform scales, the current Vercel + Neon architecture may be
+replaced by self-hosted infrastructure to reduce costs and increase
+control:
+
+- [ ] Kubernetes orchestration for app and database workloads
+- [ ] Self-hosted PostgreSQL with managed backups
+- [ ] CI/CD pipeline targeting a self-hosted cluster
