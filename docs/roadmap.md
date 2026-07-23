@@ -73,6 +73,7 @@ software engineering and QA practices.
 Small improvements with no committed timeline — polish items that are nice-to-have but don't block any phase.
 
 - [ ] Inline password confirmation validation on register (real-time, without requiring form submit)
+- [ ] Show/hide toggle on password fields (login and register)
 
 ---
 
