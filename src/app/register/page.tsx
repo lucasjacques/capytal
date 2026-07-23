@@ -5,7 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export default function RegisterPage() {
+export default async function RegisterPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string; email?: string }>;
+}) {
+  const { error, email } = await searchParams;
+
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-8">
       <div className="w-full max-w-3xl bg-card rounded-xl shadow-sm border border-border flex flex-col md:flex-row overflow-hidden">
@@ -26,23 +32,47 @@ export default function RegisterPage() {
           <form
             action={async (formData) => {
               "use server";
-              const email = formData.get("email") as string;
+              const emailValue = formData.get("email") as string;
               const password = formData.get("password") as string;
-              await createUser(email, password);
-              redirect("/login");
+              try {
+                await createUser(emailValue, password);
+                redirect("/login");
+              } catch (error) {
+                if (
+                  error instanceof Error &&
+                  "code" in error &&
+                  error.code === "23505"
+                ) {
+                  redirect(
+                    `/register?error=email_taken&email=${encodeURIComponent(emailValue)}`,
+                  );
+                }
+                throw error;
+              }
             }}
             className="flex flex-col h-full gap-4"
           >
             <div className="space-y-4 flex-1">
               <div className="space-y-1.5">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" name="email" required />
+                <Input
+                  id="email"
+                  type="email"
+                  name="email"
+                  required
+                  defaultValue={email ?? ""}
+                />
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="password">Password</Label>
                 <Input id="password" type="password" name="password" required />
               </div>
             </div>
+            {error && (
+              <p className="text-sm text-destructive">
+                An account with this email already exists.
+              </p>
+            )}
             <div className="flex justify-end">
               <Button type="submit">Create</Button>
             </div>
