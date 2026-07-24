@@ -74,6 +74,8 @@ Small improvements with no committed timeline — polish items that are nice-to-
 
 - [ ] Inline password confirmation validation on register (real-time, without requiring form submit)
 - [ ] Show/hide toggle on password fields (login and register)
+- [ ] Logo click redirects to home page
+- [ ] Register page: add "Already have an account? Login" link (mirrors login page's "Don't have an account? Register")
 - [ ] Test coverage tracking script — scan `docs/tests/**` for `Coverage:` status markers and report percentage of covered vs uncovered test cases
 - [ ] Test coverage by area — extend the script with `Area:` tags per test case to map QA effort across app features and identify under-tested critical areas
 
