@@ -44,11 +44,12 @@ export default async function RegisterPage({
                 await createUser(emailValue, password);
                 redirect("/login");
               } catch (error) {
-                if (
-                  error instanceof Error &&
-                  "code" in error &&
-                  error.code === "23505"
-                ) {
+                const pgCode =
+                  error instanceof Error
+                    ? ("code" in error && error.code) ||
+                      (error.cause as any)?.code
+                    : null;
+                if (pgCode === "23505") {
                   redirect(
                     `/register?error=email_taken&email=${encodeURIComponent(emailValue)}`,
                   );
