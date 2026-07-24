@@ -1,11 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { AuthError } from "next-auth";
 import { signIn } from "@/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export default function LoginPage() {
+export default async function LoginPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string; email?: string }>;
+}) {
+  const { error, email } = await searchParams;
+
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-8">
       <div className="w-full max-w-3xl bg-card rounded-xl shadow-sm border border-border flex flex-col md:flex-row overflow-hidden">
@@ -27,24 +35,45 @@ export default function LoginPage() {
           <form
             action={async (formData) => {
               "use server";
-              await signIn("credentials", {
-                email: formData.get("email"),
-                password: formData.get("password"),
-                redirectTo: "/",
-              });
+              try {
+                await signIn("credentials", {
+                  email: formData.get("email"),
+                  password: formData.get("password"),
+                  redirectTo: "/",
+                });
+              } catch (error) {
+                if (error instanceof AuthError) {
+                  const email = formData.get("email") as string;
+                  redirect(
+                    `/login?error=invalid_credentials&email=${encodeURIComponent(email)}`,
+                  );
+                }
+                throw error;
+              }
             }}
             className="flex flex-col h-full gap-4"
           >
             <div className="space-y-4 flex-1">
               <div className="space-y-1.5">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" name="email" required />
+                <Input
+                  id="email"
+                  type="email"
+                  name="email"
+                  required
+                  defaultValue={email ?? ""}
+                />
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="password">Password</Label>
                 <Input id="password" type="password" name="password" required />
               </div>
             </div>
+            {error && (
+              <p className="text-sm text-destructive">
+                Invalid email or password.
+              </p>
+            )}
             <div className="flex items-center justify-between">
               <p className="text-sm text-muted-foreground">
                 Don&apos;t have an account?{" "}

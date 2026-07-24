@@ -68,6 +68,19 @@ software engineering and QA practices.
 
 ---
 
+# Backlog
+
+Small improvements with no committed timeline — polish items that are nice-to-have but don't block any phase.
+
+- [ ] Inline password confirmation validation on register (real-time, without requiring form submit)
+- [ ] Show/hide toggle on password fields (login and register)
+- [ ] Logo click redirects to home page
+- [ ] Register page: add "Already have an account? Login" link (mirrors login page's "Don't have an account? Register")
+- [ ] Test coverage tracking script — scan `docs/tests/**` for `Coverage:` status markers and report percentage of covered vs uncovered test cases
+- [ ] Test coverage by area — extend the script with `Area:` tags per test case to map QA effort across app features and identify under-tested critical areas
+
+---
+
 # Phase 1 — MVP
 
 Goal:
@@ -153,3 +166,13 @@ Capytal aims to become a modern and accessible investment wallet
 management platform focused on helping users organize investments,
 understand allocations and make long-term financial decisions more
 clearly and confidently.
+
+## Infrastructure Evolution
+
+As the platform scales, the current Vercel + Neon architecture may be
+replaced by self-hosted infrastructure to reduce costs and increase
+control:
+
+- [ ] Kubernetes orchestration for app and database workloads
+- [ ] Self-hosted PostgreSQL with managed backups
+- [ ] CI/CD pipeline targeting a self-hosted cluster
