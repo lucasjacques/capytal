@@ -61,8 +61,8 @@ software engineering and QA practices.
 - [x] Auth login flow test cases
 - [x] Auth register flow test cases
 - [x] Auth sign-out flow test cases
-- [ ] Auth error handling (wrong email, wrong password)
-- [ ] Password confirmation field on register
+- [x] Auth error handling (wrong email, wrong password)
+- [x] Password confirmation field on register
 - [ ] README polish
 - [ ] Public launch
 
