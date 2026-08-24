@@ -1,5 +1,9 @@
 # Capytal
 
+Capytal is an investment wallet management platform built to help users organize their holdings, visualize asset allocation, and make long-term financial decisions with more clarity.
+
+This repository is currently in **Phase 0** — establishing the engineering foundation: authentication, testing strategy, CI/CD pipeline, and deployment infrastructure.
+
 ## Tech Stack
 
 ### Frontend
@@ -13,6 +17,7 @@
 ### Backend
 
 - **Next.js API Routes / Server Actions** — Backend logic and server-side features
+- **Auth.js** — Authentication library handling sessions, credentials, and protected routes
 
 ### Database
 
@@ -22,6 +27,7 @@
 ### Infrastructure & Deployment
 
 - **Vercel** — Hosting, deployment, and serverless infrastructure
+- **GitHub Actions** — CI pipeline running lint, type check, unit, integration, and E2E tests on every push
 
 ### Development Tools
 
@@ -125,11 +131,13 @@ Current documents:
 
 Capytal adopts a multi-layer testing strategy covering business logic, server-side behavior, and full user flows end-to-end.
 
-| Layer       | Tool                      | Scope                                  |
-| ----------- | ------------------------- | -------------------------------------- |
-| Unit        | Vitest + Testing Library  | UI components and utility logic        |
-| Integration | Vitest (Node environment) | Auth service functions against real DB |
-| E2E         | Playwright (Chromium)     | Register, login, and sign-out flows    |
+<video src="docs/showcase/auth-flow-e2e.webm" autoplay loop muted playsinline></video>
+
+| Layer       | Tool                                   | Scope                                  |
+| ----------- | -------------------------------------- | -------------------------------------- |
+| Unit        | Vitest + Testing Library               | UI components and utility logic        |
+| Integration | Vitest (Node environment)              | Auth service functions against real DB |
+| E2E         | Playwright (Chromium, Firefox, WebKit) | Register, login, and sign-out flows    |
 
 Tests run automatically on every push via the pre-push hook (unit + integration) and on every push/PR via CI (unit + integration + E2E).
 
