@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="public/images/logo.png" alt="Capytal" width="120" />
+</p>
+
 # Capytal
 
 Capytal is an investment wallet management platform built to help users organize their holdings, visualize asset allocation, and make long-term financial decisions with more clarity.
@@ -131,7 +135,7 @@ Current documents:
 
 Capytal adopts a multi-layer testing strategy covering business logic, server-side behavior, and full user flows end-to-end.
 
-<video src="docs/showcase/auth-flow-e2e.webm" autoplay loop muted playsinline></video>
+<video src="https://github.com/user-attachments/assets/c9e1039b-0f74-42b2-a07c-39a7d92e4e2f" autoplay loop muted playsinline></video>
 
 | Layer       | Tool                                   | Scope                                  |
 | ----------- | -------------------------------------- | -------------------------------------- |
