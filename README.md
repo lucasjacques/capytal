@@ -135,6 +135,8 @@ Current documents:
 
 Capytal adopts a multi-layer testing strategy covering business logic, server-side behavior, and full user flows end-to-end.
 
+The following demonstrates the complete auth flow — registration, login, and sign-out — running across Chromium, Firefox, and WebKit:
+
 <video src="https://github.com/user-attachments/assets/c9e1039b-0f74-42b2-a07c-39a7d92e4e2f" autoplay loop muted playsinline></video>
 
 | Layer       | Tool                                   | Scope                                  |
