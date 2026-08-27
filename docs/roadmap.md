@@ -78,6 +78,7 @@ Small improvements with no committed timeline — polish items that are nice-to-
 - [ ] Register page: add "Already have an account? Login" link (mirrors login page's "Don't have an account? Register")
 - [ ] Test coverage tracking script — scan `docs/tests/**` for `Coverage:` status markers and report percentage of covered vs uncovered test cases
 - [ ] Test coverage by area — extend the script with `Area:` tags per test case to map QA effort across app features and identify under-tested critical areas
+- [ ] Logo: add "Capytal" text to the logo image for better brand recognition in the README
 
 ---
 
