@@ -55,7 +55,12 @@ jobs:
         run: yarn db:migrate
 
       - name: Test
-        run: yarn test:run
+        run: yarn test:coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Install Playwright browsers
         run: yarn playwright install --with-deps chromium

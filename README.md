@@ -4,6 +4,8 @@
 
 # Capytal
 
+[![codecov](https://codecov.io/gh/lucasjacques/capytal/graph/badge.svg)](https://codecov.io/gh/lucasjacques/capytal)
+
 Capytal is an investment wallet management platform built to help users organize their holdings, visualize asset allocation, and make long-term financial decisions with more clarity.
 
 This repository is currently in **Phase 0** — establishing the engineering foundation: authentication, testing strategy, CI/CD pipeline, and deployment infrastructure.
