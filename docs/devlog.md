@@ -25,14 +25,105 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 | 1   | Frontend Foundation | Planned in roadmap from the start but omitted from the weekly schedule — UI polish needed for portfolio presentation | ✅ Done |
 | 2   | Test documentation  | Portfolio visibility into QA practices; documents test coverage, gaps, and decisions per auth flow                   | ✅ Done |
 
-| Week | Dates         | Focus                                                                  | Status                           |
-| ---- | ------------- | ---------------------------------------------------------------------- | -------------------------------- |
-| 6    | Jun 15–19     | No work done                                                           | ⏭️ Skipped                       |
-| 7    | Jun 22–26     | Frontend Foundation, Vercel deployment, v0.1.0 wrap-up + retrospective | ✅ Done                          |
-| 8    | Jun 29–Jul 03 | Auth test coverage: integration + E2E tests                            | ✅ Done                          |
-| 9    | Jul 06–10     | Finish test docs, open PR, start auth error handling                   | ⚠️ Partial — PR open, CI failing |
-| 10   | Jul 13–17     | Fix CI, merge PR, auth error handling, password confirmation, launch   | ⏭️ Skipped                       |
-| 11   | Jul 20–24     | Auth error handling, password confirmation, README, launch             | 🔄 In progress                   |
+| Week | Dates         | Focus                                                                  | Status                                                                                |
+| ---- | ------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| 6    | Jun 15–19     | No work done                                                           | ⏭️ Skipped                                                                            |
+| 7    | Jun 22–26     | Frontend Foundation, Vercel deployment, v0.1.0 wrap-up + retrospective | ✅ Done                                                                               |
+| 8    | Jun 29–Jul 03 | Auth test coverage: integration + E2E tests                            | ✅ Done                                                                               |
+| 9    | Jul 06–10     | Finish test docs, open PR, start auth error handling                   | ⚠️ Partial — PR open, CI failing                                                      |
+| 10   | Jul 13–17     | Fix CI, merge PR, auth error handling, password confirmation, launch   | ⏭️ Skipped                                                                            |
+| 11   | Jul 20–24     | Auth error handling, password confirmation, README, launch             | ⚠️ Partial — auth errors + password confirmation done; README and launch carried over |
+| 12   | Jul 27–31     | README polish, public launch                                           | ⏭️ Skipped                                                                            |
+| 13   | Aug 03–07     | README polish, public launch                                           | ⏭️ Skipped                                                                            |
+| 14   | Aug 10–14     | README polish, public launch                                           | ⏭️ Skipped                                                                            |
+| 15   | Aug 17–21     | README polish, public launch                                           | ⚠️ Partial — E2E showcase video added; README, Codecov, and launch carried over       |
+| 16   | Aug 24–28     | README polish, Codecov, public launch                                  | ⚠️ Partial — README, Codecov, and logo done; PR open, launch carried over             |
+| 17   | Aug 31–Sep 04 | Merge, public launch                                                   | 🔄 In progress                                                                        |
+
+---
+
+## Week 17 — Aug 31–Sep 04, 2026
+
+### Planned
+
+- Merge `docs/launch-prep` → main
+- Verify Codecov badge activates after merge
+- Write and publish LinkedIn post
+
+---
+
+## Week 16 — Aug 24–28, 2026
+
+### Planned
+
+- README polish (description, GitHub Actions, Auth.js, Playwright browsers, video embed)
+- Codecov integration
+- Weekly ceremony
+- Public launch
+
+### What was built
+
+- README: project description, centered logo, tech stack additions (Auth.js, GitHub Actions, Playwright browsers), E2E showcase video embedded via GitHub CDN
+- Logo: replaced with properly transparent PNG — original had semi-transparent pixels baked in, fixed via remove.bg
+- Codecov: lcov reporter added to Vitest config, coverage upload step added to CI (`codecov/codecov-action@v5`)
+- Backlog expanded: logo text item and `test:all` script item added
+- `docs/launch-prep` PR opened against main
+
+### Decisions made
+
+- E2E video hosted on GitHub CDN via issue upload — GitHub doesn't render `<video>` tags pointing to committed repo files
+- Logo transparency issue traced to semi-transparent (not fully transparent) pixels in the original PNG — remove.bg fixed it
+- Codecov action v5 used per Codecov's current recommendation
+
+### Planned for next week
+
+- Merge `docs/launch-prep` → main
+- Verify Codecov badge activates after merge
+- Write and publish LinkedIn post
+
+---
+
+## Week 15 — Aug 17–21, 2026
+
+### Planned
+
+- README polish
+- Public launch
+
+### What was built
+
+- Recorded E2E auth flow video using Playwright (`--video=on`) covering all auth test scenarios
+- Added `docs/showcase/auth-flow-e2e.webm` (374KB, 32s) as a portfolio showcase asset
+
+### Decisions made
+
+- Video format chosen over Playwright HTML report — report is a developer tool, not recruiter-friendly
+- All browser recordings concatenated into one video externally; Chromium used for recording
+- File committed directly to repo at 374KB — no CDN needed at this size
+
+### Planned for next week
+
+- README polish (description, GitHub Actions, Auth.js, Playwright browsers, video embed)
+- Codecov integration
+- Public launch
+
+---
+
+## Week 14 — Aug 10–14, 2026
+
+No work done this week.
+
+---
+
+## Week 13 — Aug 03–07, 2026
+
+No work done this week.
+
+---
+
+## Week 12 — Jul 27–31, 2026
+
+No work done this week.
 
 ---
 
@@ -47,12 +138,27 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 
 ### What was built
 
-- Login page: error message shown on wrong credentials, email field preserved on redirect
-- Register page: error message shown on duplicate email, email field preserved on redirect
+- Login page: friendly error message shown on wrong credentials, email field preserved on error redirect
+- Register page: password confirmation field added, friendly error messages for password mismatch and duplicate email, email preserved on error redirect
+- E2E: 4 new test cases covering all new error scenarios (wrong password, preserved email on error, duplicate email, password mismatch)
+- E2E: `browserName` Playwright fixture used in all test emails to prevent parallel-browser test collisions
+- Roadmap backlog expanded: show/hide password toggle, inline password confirmation, test coverage tracking script, and UX items
+- `fix/auth-error-handling` merged to main
 
-### Planned for rest of week
+### Decisions made
 
-- Password confirmation field on register
+- Password mismatch and duplicate email handled server-side on form submit — inline real-time validation left as backlog item
+- `error.cause.code` checked for Drizzle-wrapped Postgres errors (code `23505`) — Drizzle wraps the driver error, so the postgres code is not directly on the outer Error
+- `browserName` Playwright fixture used in all test email addresses to prevent parallel-browser collisions in CI
+
+### Learnings
+
+- Drizzle ORM wraps the underlying postgres driver error — the postgres error code is on `error.cause.code`, not `error.code` directly
+- Next.js `searchParams` is a `Promise<{...}>` in async page components (Next.js 15+ behavior) — must be awaited before reading query params
+- Auth.js logs a `CredentialsSignin` error on every failed login — expected behavior; suppressing it requires custom error logging hooks
+
+### Planned for next week
+
 - README polish
 - Public launch
 
