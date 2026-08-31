@@ -37,7 +37,18 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 | 13   | Aug 03–07     | README polish, public launch                                           | ⏭️ Skipped                                                                            |
 | 14   | Aug 10–14     | README polish, public launch                                           | ⏭️ Skipped                                                                            |
 | 15   | Aug 17–21     | README polish, public launch                                           | ⚠️ Partial — E2E showcase video added; README, Codecov, and launch carried over       |
-| 16   | Aug 24–28     | README polish, Codecov, public launch                                  | 🔄 In progress                                                                        |
+| 16   | Aug 24–28     | README polish, Codecov, public launch                                  | ⚠️ Partial — README, Codecov, and logo done; PR open, launch carried over             |
+| 17   | Aug 31–Sep 04 | Merge, public launch                                                   | 🔄 In progress                                                                        |
+
+---
+
+## Week 17 — Aug 31–Sep 04, 2026
+
+### Planned
+
+- Merge `docs/launch-prep` → main
+- Verify Codecov badge activates after merge
+- Write and publish LinkedIn post
 
 ---
 
@@ -49,6 +60,26 @@ Target: functional foundation with auth, testing, database, and CI/CD in place.
 - Codecov integration
 - Weekly ceremony
 - Public launch
+
+### What was built
+
+- README: project description, centered logo, tech stack additions (Auth.js, GitHub Actions, Playwright browsers), E2E showcase video embedded via GitHub CDN
+- Logo: replaced with properly transparent PNG — original had semi-transparent pixels baked in, fixed via remove.bg
+- Codecov: lcov reporter added to Vitest config, coverage upload step added to CI (`codecov/codecov-action@v5`)
+- Backlog expanded: logo text item and `test:all` script item added
+- `docs/launch-prep` PR opened against main
+
+### Decisions made
+
+- E2E video hosted on GitHub CDN via issue upload — GitHub doesn't render `<video>` tags pointing to committed repo files
+- Logo transparency issue traced to semi-transparent (not fully transparent) pixels in the original PNG — remove.bg fixed it
+- Codecov action v5 used per Codecov's current recommendation
+
+### Planned for next week
+
+- Merge `docs/launch-prep` → main
+- Verify Codecov badge activates after merge
+- Write and publish LinkedIn post
 
 ---
 
